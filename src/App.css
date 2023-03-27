@@ -46,12 +46,12 @@ th {
   z-index: 100;
   cursor: pointer;
   height: auto;
-  width: 30%;
+  width: 20%;
   background: burlywood;
   color: blue;
   box-sizing: border-box;
   padding: 10px;
-  text-align: center;
+  text-align: end;
   font-size: 20px;
   position: relative;
   top: 10%;

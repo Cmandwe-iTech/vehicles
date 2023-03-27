@@ -6,9 +6,9 @@ const Vehicle = () => {
   const [type, settype] = useState("All");
   const [name, setname] = useState("");
   const [rd, setrd] = useState([]);
-  const [pop, setpop] = useState(false);
-  const [id, setid] = useState(988);
-  const [arr, setarr] = useState("");
+  // const [pop, setpop] = useState(false);
+  // const [id, setid] = useState(988);
+  // const [arr, setarr] = useState({});
   useEffect(() => {
     fetch(
       "https://vpic.nhtsa.dot.gov/api/vehicles/GetWMIsForManufacturer/hon?format=json"
@@ -46,24 +46,24 @@ const Vehicle = () => {
       setrd(arr);
     }
   }, [fd, name, setrd]);
-  useEffect(() => {
-    let pp = rd.find((item, i) => {
-      return (i = id);
-    });
-    setarr(pp);
-  }, [id, rd, setarr]);
+  // useEffect(() => {
+  //   let pp = rd.find((item, i) => {
+  //     return (i === id);
+  //   });
+  //   setarr(pp);
+  // }, [id, rd, setarr]);
 
-  console.log(arr);
+  // console.log(arr);
   return (
     <div className="veh-container">
       <div className="header">
         <h1>VEHICLE MANUFACTURERS</h1>
       </div>
 
-      {pop ? (
+      {/* {pop ? (
         <div>
-          <div className="div1">
-            <p onClick={() => setpop(false)} style={{float:"right", color:"black"}}>X</p>
+          <div style={{ display: "block" }} className="div1">
+            <p onClick={() => setpop(false)} id="id1">X</p>
             <p>{arr.Name}</p>
             <p>{arr.WMI}</p>
           </div>
@@ -71,7 +71,7 @@ const Vehicle = () => {
         </div>
       ) : (
         ""
-      )}
+      )} */}
 
       <div className="section">
         <div className="serch-filter">
@@ -113,7 +113,14 @@ const Vehicle = () => {
             {rd.map((item, i) => {
               return (
                 <tr key={i}>
-                  <td onClick={() => {setpop(true);setid(i);}}>{item.Name}</td>
+                  <td
+                    onClick={() => {
+                      // setpop(true);
+                      // setid(i);
+                    }}
+                  >
+                    {item.Name}
+                  </td>
                   <td>{item.Country}</td>
                   <td>{item.VehicleType}</td>
                 </tr>
