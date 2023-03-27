@@ -45,4 +45,14 @@ th {
 .div1{
   z-index: 100;
   cursor: pointer;
+  height: auto;
+  width: fit-content;
+  background: burlywood;
+  color: blue;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 20px;
+  position: relative;
+  top: 10%;
+  left: 25%;
 }

@@ -7,8 +7,8 @@ const Vehicle = () => {
   const [name, setname] = useState("");
   const [rd, setrd] = useState([]);
   const [pop, setpop] = useState(false);
-//   const [id, setid] = useState("");
-  const [arr, setarr] = useState([]);
+  const [id, setid] = useState(988);
+  const [arr, setarr] = useState("");
   useEffect(() => {
     fetch(
       "https://vpic.nhtsa.dot.gov/api/vehicles/GetWMIsForManufacturer/hon?format=json"
@@ -20,7 +20,7 @@ const Vehicle = () => {
         setveh(data.Results);
       });
   }, [setveh]);
-//   console.log(veh);
+  //   console.log(veh);
   useEffect(() => {
     if (type === "All") {
       setfd(veh);
@@ -46,30 +46,33 @@ const Vehicle = () => {
       setrd(arr);
     }
   }, [fd, name, setrd]);
-  const popfunction=(id) => {
-    let pp = rd.filter((item) => {
-      return (item.Id = id);
+  useEffect(() => {
+    let pp = rd.find((item, i) => {
+      return (i = id);
     });
     setarr(pp);
-  };
+  }, [id, rd, setarr]);
+
   console.log(arr);
   return (
     <div className="veh-container">
       <div className="header">
         <h1>VEHICLE MANUFACTURERS</h1>
       </div>
-      <div>
-      {pop
-        ? arr.map((c) => {
-            <div style={{ display: "block" }} className="div1">
-              <p onClick={() => setpop(false)}>X</p>
-              <p>{c.name}</p>
-              <p>{c.WMI}</p>
-            </div>;
-          })
-        : ""}
-      </div>
-      
+
+      {pop ? (
+        <div>
+          <div className="div1">
+            <p onClick={() => setpop(false)} style={{float:"right", color:"red"}}>X</p>
+            <p>{arr.Name}</p>
+            <p>{arr.WMI}</p>
+          </div>
+          ;
+        </div>
+      ) : (
+        ""
+      )}
+
       <div className="section">
         <div className="serch-filter">
           <span id="sp1">
@@ -109,13 +112,8 @@ const Vehicle = () => {
             </tr>
             {rd.map((item, i) => {
               return (
-                <tr
-                  key={i}
-                >
-                  <td onClick={() => {
-                    setpop(true);
-                    popfunction(item.Id);
-                  }}>{item.Name}</td>
+                <tr key={i}>
+                  <td onClick={() => {setpop(true);setid(i);}}>{item.Name}</td>
                   <td>{item.Country}</td>
                   <td>{item.VehicleType}</td>
                 </tr>
