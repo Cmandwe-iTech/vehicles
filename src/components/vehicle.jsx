@@ -29,7 +29,7 @@ const Vehicle = () => {
     if(name === ""){
       setrd(fd)
     }else{
-        let arr = fd.filter((item, i)=> item.Name.toLowerCase().includes(name))
+        let arr = fd.filter((item, i)=> item.Name.includes(name.toLocaleUpperCase()))
         setrd(arr)
     }
   },[fd,name,setrd])
