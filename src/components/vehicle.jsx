@@ -114,10 +114,10 @@ const Vehicle = () => {
               return (
                 <tr key={i}>
                   <td
-                    onClick={() => {
-                      // setpop(true);
-                      // setid(i);
-                    }}
+                    // onClick={() => {
+                    //   // setpop(true);
+                    //   // setid(i);
+                    // }}
                   >
                     {item.Name}
                   </td>
