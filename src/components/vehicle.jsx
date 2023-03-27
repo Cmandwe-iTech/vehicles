@@ -63,7 +63,7 @@ const Vehicle = () => {
       {pop ? (
         <div>
           <div className="div1">
-            <p onClick={() => setpop(false)} style={{float:"right", color:"red"}}>X</p>
+            <p onClick={() => setpop(false)} style={{float:"right", color:"black"}}>X</p>
             <p>{arr.Name}</p>
             <p>{arr.WMI}</p>
           </div>
